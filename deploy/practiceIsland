@@ -1,0 +1,26 @@
+const processQueue = (x, y) => {
+    while(queue.length > 0) {
+
+  
+    }
+  }
+  const h = grid.length, w = grid[0].length;
+  const moves = [[1,0], [-1,0], [0,1], [0,-1]];
+  const isValid = (x, y) => (x >= 0 && x < h && y >= 0 && y < w);
+  const queue = [];
+  const enQueue = (x, y) => {
+    queue.push([x, y]);
+  };
+  const deQueue = () => {
+    let a = queue.shift([x, y]);
+    return a;
+  }
+  for(let i = 0; i < h; i++) {
+    for(let j = 0; j < w; j++) {
+      if(grid[i][j] === '1') {
+        enQueue(i, j);
+        processQueue(queue, i, j);
+      }
+    }
+  }
+};

@@ -1,0 +1,23 @@
+if len(s) == 0:
+            return 0
+        j = 1
+        maxNum = 1
+        ans = s[0]
+        while j < len(s):
+            if s[j] not in ans:
+                ans += s[j]
+                j += 1
+                if j == len(s):
+                    if len(ans) > maxNum:
+                        maxNum = len(ans)
+                    
+            else:
+                if len(ans) > maxNum:
+                    maxNum = len(ans)
+                k = ans.index(s[j])+1
+                ans = ans[k:j+1]
+                j += 1
+        
+        return maxNum
+        
+event loop에 대해 공부할 것

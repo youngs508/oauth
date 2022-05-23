@@ -1,0 +1,12 @@
+브라우저 렌더링
+1. html 파싱, dom 트리 구축
+2. css 파싱, CSSOM 트리 구축
+3. Javascript 실행
+4. DOM, CSSOM 조합 후 render 트리 배치
+5. 현재 브라우저 창에서 보여지고 있는 화면 기준으로 render 트리를 위치 계산
+후 그린다
+execution context
+- 실행 컨텍스트
+- this
+- event loop
+- graph, tree, BFS, DFS

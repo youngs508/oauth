@@ -1,0 +1,5 @@
+delete userInfo.dataValues.password;
+            const accessToken = generateAccessToken(userInfo.dataValues);
+            sendAccessToken(res, accessToken);
+            return res.status(201).json({ message: "Post was successfully created.", 
+                    data: { userInfo: userInfo.dataValues} });

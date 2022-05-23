@@ -1,0 +1,237 @@
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+function solution(places) {
+    places = places.map(p => p.map(el => el.split('')))
+    let ans = [];
+    let distance = 1;
+    for(let i = 0; i < places.length; i++) {
+        distance = 1;
+        for (let j = 0; j < 5; j++) {
+            for (let k = 0; k < 5; k++) {
+                if (places[i][j][k] === 'P') {
+                    dfs(copyArr(places[i]), j, k, 0);
+                    if (distance === 0) break;
+                }
+            }
+        }
+        distance === 1? ans.push(1) : ans.push(0);
+         // 1 or 0
+    }
+    return ans;
+
+    function dfs(place, x, y, step) {
+        place[x][y] = 'X';
+        let moves = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+        let ables = [];
+        if (step === 2) return;
+        for (let i = 0; i < 4; i++) {
+            let [nx, ny] = [x + moves[i][0], y + moves[i][1]];            
+            if (place[nx] && place[nx][ny] === 'O') {
+                place[nx][ny] = 'X';
+                ables.push([nx, ny]);
+            } else if (place[nx] && place[nx][ny] === 'P') {
+                distance = 0;
+                return;
+            } 
+        }
+        if (!ables.length) return;
+        for (let i = 0; i < ables.length; i++) {
+            let [nx, ny] = ables[i];
+            dfs(place, nx, ny, step + 1);
+        }
+    }
+
+    function copyArr(arr) {
+        let newarr = [];
+        for (let i = 0; i < arr.length; i++) {
+            newarr.push([...arr[i]]);
+        }
+        return newarr;
+    }
+}
+
+function dis(x,y,nx,ny) {
+    if(Math.abs(nx-x) + Math.abs(ny-y) <= 2) {
+        return false;
+    }
+    return true;
+}
+
+function helper(i, j, p) {
+    const isVisited = [];
+    const temp = new Array(p[0].length).fill(false);
+    for(let i = 0; i < p.length; i++) {
+        isVisited.push(temp);
+    }
+    const isValid = (i, j) => (i >=0 && i < p.length && j >= 0 && j < p[0].length);
+    let queue = [];
+    const enQueue = (pos) => {
+        queue.push(pos);
+    }
+    const deQueue = () => {
+        const pos = queue.shift();
+        return pos;
+    }
+    enQueue([i,j]);
+    isVisited[i][j] = true;
+    const MOVES = [[1,0],[-1,0],[0,1],[0,-1]];
+    while(queue.length > 0) {
+        const [x,y] = deQueue(queue);
+        MOVES.forEach((move) => {
+            const nx = x + move[0];
+            const ny = y + move[1];
+            if(isValid(nx,ny) && p[nx][ny] !== 'X' && !isVisited[nx][ny]) {
+                if(p[nx][ny] === 'P') {
+                    return [nx,ny];
+                }
+                enQueue([nx,ny]);
+            }
+        });
+    }
+}
+
+function solution(places) {
+    const answer = [];
+    let flag = true;
+    for(let p of places) {
+        for(let i = 0; i < p.length; i++) {
+            for(let j = 0; j < p[0].length; j++) {
+                if(p[i][j] === 'P' && helper(i,j,p)) {
+                    [nx, ny] = helper(i,j,p);
+                    if(!(dis(i,j,nx,ny))) {
+                        flag = false;
+                        break;
+                    } 
+                }
+            }
+            if(flag === false) {
+                break;
+            }
+        }
+        if(flag === true) {
+            answer.push(1);
+        } else {
+            answer.push(0)
+        }
+    }
+    return answer;
+}
+
+function dis(x,y,nx,ny) {
+    if(Math.abs(nx-x) + Math.abs(ny-y) <= 2) {
+        return true;
+    }
+    return false;
+}
+
+function helper(i, j, p) {
+    const isVisited = [];
+    const temp = new Array(5).fill(false);
+    for(let i = 0; i < 5; i++) {
+        isVisited.push(temp);
+    }
+    const isValid = (i, j) => (i >=0 && i < 5 && j >= 0 && j < 5);
+    let queue = [];
+    const enQueue = (pos) => {
+        queue.push(pos);
+    }
+    const deQueue = () => {
+        const pos = queue.shift();
+        return pos;
+    }
+    enQueue([i,j]);
+    isVisited[i][j] = true;
+    const MOVES = [[1,0],[-1,0],[0,1],[0,-1]];
+    while(queue.length > 0) {
+        const [x,y] = deQueue(queue);
+        MOVES.forEach(move => {
+            const nx = x + move[0];
+            const ny = y + move[1];
+            if(isValid(nx,ny) && p[nx][ny] !== 'X' && !isVisited[nx][ny]) {
+                if(p[nx][ny] === 'P') {
+                    return [nx,ny];
+                }
+                enQueue([nx,ny]);
+                isVisited[nx][ny] = true;
+            }
+        });
+    }
+}
+
+function solution(places) {
+    const answer = [];
+    for(let p of places) {
+        let flag = true;
+        for(let i = 0; i < 5; i++) {
+            for(let j = 0; j < 5; j++) {
+                if(p[i][j] === 'P' && helper(i,j,p)) {
+                    const ans = helper(i,j,p);
+                    if(ans) {
+                        const [nx, ny] = ans;
+                        if(dis(i,j,nx,ny)) {
+                            flag = false;
+                            break;
+                        } 
+                    }
+                }
+            }
+            if(flag === false) {
+                break;
+            }
+        }
+        if(flag) {
+            answer.push(1);
+        } else {
+            answer.push(0)
+        }
+    }
+    return answer;
+}

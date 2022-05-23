@@ -1,0 +1,37 @@
+if(side1 * side1 === side2 * side2 + side3 * side3) {
+    return true;
+  } else if(side2 ** 2 === side3 ** 2 + side1 ** 2) {
+    return true;
+  } else if(Math.pow(side3,2) === Math.pow(side1,2) + Math.pow(side2,2)) {
+    return true;
+  } else {
+    return false;
+  }if(side1 * side1 === side2 * side2 + side3 * side3) {
+    return true;
+  } else if(side2 ** 2 === side3 ** 2 + side1 ** 2) {
+    return true;
+  } else if(Math.pow(side3,2) === Math.pow(side1,2) + Math.pow(side2,2)) {
+    return true;
+  } else {
+    return false;
+  }
+  
+  second += 1;
+  if(second === 60) {
+    minute += 1;
+    second = 0;
+  }
+  if(minute === 60) {
+    hour += 1;
+    minute = 0;
+  }
+  if(hour === 24) {
+    hour = 0;
+  }
+  return `1초 뒤에 ${hour}시 ${minute}분 ${second}초 입니다`;
+  
+  if(anything === 0 || anything === undefined || isNaN(anything) || anything === '' || anything === null) {
+    return true;
+  } else {
+    return false;
+  }

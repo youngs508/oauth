@@ -1,0 +1,40 @@
+function gcd(M, N) {
+  return (M % N) === 0 ? N : gcd(N, M % N);
+}
+
+const res = [];
+  let val; // variable for 최대공약수
+  let temp;
+
+  if(M > N) {
+    val = gcd(M, N); // M > N
+  } else {
+    val = gcd(N, M); // N > M
+  } 
+  let limit = Math.floor(Math.sqrt(val));
+  for(let i = 1; i <= limit; i++) {
+    if(val % i === 0) {
+      res.push([i, M/i, N/i]);
+      if(i * i < val) {
+        temp = val/i;
+        res.push([temp, M/temp, N/temp]);
+      }
+    }
+  }
+  return res.sort((a,b) => a[0] - b[0]);
+}
+
+let freshArr = stuffArr.filter(el => String(el).slice(-3) !== "000");
+  const recur = function(arr, choiceNum) {
+    let result = [];
+    if(choiceNum === 1) return arr.map(hand => [hand]);
+    arr.forEach((hand, idx, arr) => {
+      const fixer = hand;
+      const restArr = arr.filter((_, index) => index !== idx);
+      const permutationArr = recur(restArr, choiceNum - 1);
+      const combineFixer = permutationArr.map(hand => [fixer, ...hand]);
+      result.push(...combineFixer);
+    });
+    return result;
+  };
+  return recur(freshArr, choiceNum);

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./test.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <p>flex-direction : row → </p>
+        <section id="section1">
+            <div class="one">one</div>
+            <div class="two">two</div>
+            <div class="three">three</div>
+            <div class="four">four</div>
+        </section>
+        align-self 속성은 flex direction과 수직으로 작용합니다.
+        <br/>
+        따라서 row의 경우는 세로로, column의 경우는 가로로 적용되겠죠?
+        <br/>
+        방향에 유의해서, 속성에 따라 어떻게 그려졌는지 분석해보세요.
+        <br/><br/>
+        one: flex-start;
+        <br/>
+        two: center;
+        <br/>
+        three: flex-end;
+        <br/>
+        four: stretch;        
+    </section>
+    <section>
+        <p>flex-direction : column ↓ </p>
+        <section id="section2">
+            <div class="one">one</div>
+            <div class="two">two</div>
+            <div class="three">three</div>
+            <div class="four">four</div>
+        </section>
+    </section>
+</body>
+</html>

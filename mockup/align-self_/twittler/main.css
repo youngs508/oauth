@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding : 0;
+}
+
+
+html {
+  height: 100vh;
+  padding: 15px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+header {
+  flex: 10 0 0;
+}
+#greeting {
+  text-align: center;
+  font-size: 3rem;
+  color: white;
+  text-shadow: 0 0 2px rgb(16, 128, 255);
+}
+
+main {
+  flex: 87 0 0;
+  display : flex;
+  flex-direction: column;
+}
+
+footer {
+  flex: 3 0 0;
+  text-align: end;
+}
+
+
+main section {
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+
+#tweetForm {
+  flex: 3 0 0;
+  background-color: skyblue;
+}
+.form__wrapper {
+  padding: 5px;
+}
+.form__label {
+  font-size: 1.2rem;
+  font-weight: 600;;
+}
+#messageInput {
+  width: 100%;
+  height: 50px;
+}
+.button__wrapper {
+  margin-top: 10px;
+  display: flex;
+}
+button {
+  margin: 10px;
+  padding: 10px;
+  flex: 5 0 0;
+  font-size: 1.1rem;
+}
+
+
+
+#tweetList {
+  flex: 7 0 0;
+  background-color: rgb(214, 214, 214);
+}
+li {
+  list-style-type: none;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+.tweet__createdAt {
+  float : right;
+}
+.tweet__username {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.tweet__createdAt {
+  color: rgb(66, 66, 66);
+}

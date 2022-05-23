@@ -1,0 +1,5 @@
+script: cli에서 사용 가능한 명령어를 실행시키기
+dependency: 프로젝트가 실행될 때 필요한 모듈들
+devDependency: 개발할 때 필요한 모듈들 (eslint, mocha, chai)
+npm install: node.module 폴더가 생성됨.
+git.ignore: git에 올릴 때 node.module만 빼고 올리게 됨. 

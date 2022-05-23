@@ -1,0 +1,13 @@
+// let minimum = Infinity;
+  // let pts = points.map(el => Math.round(el*100));
+  // pts.sort((a,b) => a[0]-b[0]);
+  // let midy = Math.floor((pts[0][0] + pts[pts.length-1][0]) / 2);
+  // let midx = Math.floor((pts[0][1] + pts[pts.length-1][1]) / 2);
+  // for(let i = 0; i < pts.length-1; i++) {
+  //   for(let j = i+1; j < pts.length; j++) {
+  //     if(calculateDistance(pts[i],pts[j]) < minimum) {
+  //       minimum = calculateDistance(pts[i],pts[j]);
+  //     }
+  //   }
+  // }
+  // return minimum;

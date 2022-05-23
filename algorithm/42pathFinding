@@ -1,0 +1,98 @@
+const createMatrix = (village) => {
+  const matrix = [];
+  village.forEach((line) => {
+    const row = [];
+    for (let i = 0; i < line.length; i++) row.push(line[i]);
+    matrix.push(row);
+  });
+  return matrix;
+};
+
+const gossipProtocol = function (village, row, col) {
+  // TODO: 여기에 코드를 작성합니다.
+  const matrix = createMatrix(village);
+  let R = matrix.length;
+  let C = matrix[0].length;
+  const MOVES = [[-1,0],[1,0],[0,-1],[0,1]];
+  const isValid = (row, col) => (row >= 0 && row < R && col >= 0 && col < C);
+  const enQueue = (queue, pos) => {
+    queue.push(pos);
+  };
+  const deQueue = (queue) => {
+    const pos = queue.shift();
+    return pos;
+  };
+  let queue = [];
+  enQueue(queue, [row, col]);
+  matrix[row][col] = 0;
+  let cnt;
+  while(queue.length > 0) {
+    const [nr, nc] = deQueue(queue);
+    cnt = matrix[nr][nc];
+    MOVES.forEach((move) => {
+      const nrow = nr + move[0];
+      const ncol = nc + move[1];
+      if(isValid(nrow, ncol) && matrix[nrow][ncol] === '1') {
+        matrix[nrow][ncol] = matrix[nr][nc] + 1;
+        enQueue(queue,[nrow, ncol]);
+      }
+    });
+  }
+  return cnt;
+};
+
+const N = village.length;
+  
+  const matrix = createMatrix(village);
+  
+  const moves = [[1,0], [-1,0], [0,1], [0,-1]];
+  const isValid = (y, x) => (y >= 0 && y < N && x >= 0 && x < N);
+  const enQueue = (queue, pos) => {
+    queue.push(pos);
+  };
+  const deQueue = (queue) => {
+    const pos = queue.shift();
+    return pos;
+  };
+  let tp = [];
+  for(let i = 0; i < N; i++) {
+    for(let j = 0; j < N; j++) {
+      if(matrix[i][j] === '2') {
+        tp.push([i,j]);
+      }
+    }
+  }
+  const answer = [];
+  for(let q of getCombinations(tp, num)) {
+    
+    const times = [];
+    for(let i = 0; i < N; i++) {
+      times.push(new Array(N).fill(0));
+    }
+    const isVisited = [];
+    for(let i = 0; i < N; i++) {
+      isVisited.push(new Array(N).fill(false));
+    }
+    for(let i of q) {
+      isVisited[i[0]][i[1]] = true;
+    }
+    let res;
+    while(q.length > 0) {
+      const [height, width] = deQueue(q);
+      res = times[height][width];
+      moves.forEach((move) => {
+        let nh = move[0] + height;
+        let nw = move[1] + width;
+        if(isValid(nh, nw) && matrix[nh][nw] !== '0' && !isVisited[nh][nw]) {
+          times[nh][nw] = times[height][width] + 1;
+          isVisited[nh][nw] = true;
+          if(matrix[nh][nw] === '1') {
+            enQueue(q, [nh, nw]);
+          }
+        }
+      });
+    }
+    answer.push(res);
+  }
+  return Math.min(...answer);
+};

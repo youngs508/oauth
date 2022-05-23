@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>twittler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="data.js"></script>
+</head>
+<body>
+  <header>
+    <div id="greeting">twittler</div>
+  </header>
+  <main>
+    <section id="tweetForm">
+        <div class="form__wrapper">
+          <div class="form__label">username</div>
+          <input id="usernameInput" class="form__input" />          
+        </div>
+        <div class="form__wrapper">
+          <div class="form__label">message</div>
+          <input id="messageInput" class="form__input" />          
+        </div>
+        <div class="button__wrapper">
+          <button id="tweetButton">tweet</button>
+          <button id="refreshButton">check new tweets</button>
+        </div>
+    </section>
+    <section id="tweetList">
+      <li class="tweet">
+        <span class="tweet__username">Ingikim</span>
+        <span class="tweet__createdAt">2019-01-05</span>
+        <div class="tweet__message">education for real world</div>
+      </li>
+      <li class="tweet">
+        <span class="tweet__username">Stevejobs</span>
+        <span class="tweet__createdAt">2019-01-04</span>
+        <div class="tweet__message">Stay hungry, and stay foolish.</div>
+      </li>
+      <li class="tweet">
+        <span class="tweet__username">Ingikim</span>
+        <span class="tweet__createdAt">2019-01-03</span>
+        <div class="tweet__message">code now! #work #hard</div>
+      </li>
+    </section>
+  </main>
+  <footer>
+    All rights reserved @ Codestates 2022
+  </footer>
+</body>
+</html>

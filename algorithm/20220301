@@ -1,0 +1,30 @@
+if flag == 0 and i < len(result)-2:
+                    k += str(result[i]) + "->"
+                    flag = 1
+answer = []
+        flag = 0
+        for i in range(len(result)-1):
+            if result[i+1] == result[i]+1:
+                if flag == 0:
+                    k += str(result[i]) + "->"
+                    flag = 1
+                if i == len(result)-2:
+                    k += str(result[-1])
+                    answer.append(k)
+            else:
+                k += str(result[i])
+                answer.append(k)
+                k = ""
+                flag = 0
+                if i == len(result)-2:
+                    k += str(result[-1])
+                    answer.append(k)
+        return answer
+spec = [i for i in range(lower, upper+1)]
+for i in spec:
+            if i not in nums:
+                result.append(i)
+if len(result) == 1:
+            return [str(result[0])]
+// alphabet = 'abcdefghijklmnopqrstuvwxyz'
+strings.sort(key = lambda x: len(x))

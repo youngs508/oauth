@@ -1,0 +1,18 @@
+version: '3'
+services:
+  MongoDB:
+    image: mongo:4.4.4
+    command: ["--replSet", "foobar-dev", "--bind_ip_all", "--port", "27017"]
+    volumes:
+      - "./data:/data"
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --port 27017 --quiet) -eq 1 
+      interval: 10s
+      start_period: 30s
+    networks:
+      - MongoDB
+networks:
+  MongoDB:
+    driver: bridge

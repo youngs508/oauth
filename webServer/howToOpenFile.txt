@@ -1,0 +1,39 @@
+npx serve client/ -l 1234
+
+const { method, url } = request;
+  if(method === 'OPTIONS') {
+    // When method is options
+    response.writeHead(200, defaultCorsHeader);
+    response.end('hello mini-server sprints');
+    return;
+  }
+  
+  let body = [];
+
+  if(method === 'POST' && url === '/upper') {
+    // When method is post and url is upper
+    request.on('data', chunk => {
+      body.push(chunk);
+    }).on('end', () => {
+        body = Buffer.concat(body).toString();
+        response.writeHead(201, defaultCorsHeader);
+        response.end(body.toUpperCase());
+        return response;
+    });
+  } else if(method === 'POST' && url === "/lower") {
+    // When method is post and url is lower
+    request.on('data', chunk => {
+      body.push(chunk);
+    }).on('end', () => {
+        body = Buffer.concat(body).toString();
+        response.writeHead(201, defaultCorsHeader);
+        response.end(body.toLowerCase());
+        return response;
+    });
+  } else {
+    // manage error
+    response.statusCode = 404;
+    response.end();
+    return;
+  }
+}).listen(1234);

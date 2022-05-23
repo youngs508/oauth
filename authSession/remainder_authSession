@@ -1,0 +1,23 @@
+req.session.sid = userInfo.userId;
+      res.status(200).send({data:userInfo,message: "ok"});
+      console.log(req.session.sid);  // kimcoding  
+      
+      // console.log(req.body);  // { userId: 'kimcoding', password: '1234' }
+      console.log(userInfo);  // 유저정보 다출력
+      data: null, 
+      
+      req.session.sid = userInfo.userId;
+      res.status(200).json({data:userInfo,message: 'ok'});
+      console.log(req.session.sid);
+      
+      req.session.destroy();  // 아이디 삭제하는 방법
+      
+      {data:null, "message":"not authorized"}
+      
+      // console.log('@@@@@@@@@@@@@@',res.session.userId);  // 세션객체 안에 kimcoding
+      
+      console.log(userInfo);  // 세션객체 안에 유저 정보가 담겨 있습니다.
+      
+      react-scripts start
+      
+      SSL_CRT_FILE=cert.pem SSL_KEY_FILE=key.pem 
